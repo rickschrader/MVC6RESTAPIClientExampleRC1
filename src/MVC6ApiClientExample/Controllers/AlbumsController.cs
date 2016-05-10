@@ -66,17 +66,47 @@ namespace MVC6ApiClientExample.Controllers
             return View(album);
         }
 
-        //public async Task<IActionResult> Edit(string id)
-        //{
+        public async Task<IActionResult> Edit(string id)
+        {
+            //TODO: DI for url, etc
+            var requestUrl = _baseUrl + id;
+            var httpClient = new HttpClient();
 
-        //}
+            Album album;
 
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(Album album)
-        //{
-        
-        //}
-        
+            using (var response = await httpClient.GetAsync(requestUrl))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(String.Format("Server error (HTTP {0}: {1}).", response.StatusCode, response.Content));
+                }
+
+                var json = await response.Content.ReadAsStringAsync();
+                album = JsonConvert.DeserializeObject(json, typeof(Album)) as Album;
+            }
+
+            return View(album);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Album album)
+        {
+            //TODO: DI for url, etc
+            var requestUrl = _baseUrl + album.Id;
+            var httpClient = new HttpClient();
+
+            using (var response = await httpClient.PutAsync(requestUrl, new StringContent(JsonConvert.SerializeObject(album), Encoding.UTF8, "application/json")))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(String.Format("Server error (HTTP {0}: {1}).", response.StatusCode, response.Content));
+                }
+            }
+
+            //Go back to the list
+            return RedirectToAction("Index");
+        }
+
         public async Task<IActionResult> Delete(string id)
         {
             var requestUrl = _baseUrl + id;
