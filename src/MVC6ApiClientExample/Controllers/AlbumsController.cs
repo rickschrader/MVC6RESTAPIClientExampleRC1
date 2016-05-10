@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -81,8 +82,6 @@ namespace MVC6ApiClientExample.Controllers
             var requestUrl = _baseUrl + id;
             var httpClient = new HttpClient();
 
-            //Album album;
-
             //TODO: Prompt to confirm delete?
 
             using (var response = await httpClient.DeleteAsync(requestUrl))
@@ -91,9 +90,6 @@ namespace MVC6ApiClientExample.Controllers
                 {
                     throw new Exception(String.Format("Server error (HTTP {0}: {1}).", response.StatusCode, response.Content));
                 }
-
-                //var json = await response.Content.ReadAsStringAsync();
-                //album = JsonConvert.DeserializeObject(json, typeof(Album)) as Album;
             }
 
             //Refresh the list
@@ -101,16 +97,31 @@ namespace MVC6ApiClientExample.Controllers
         }
 
 
-        //public async Task<IActionResult> Create()
-        //{
-        //    
-        //}
+        public IActionResult Create()
+        {
+            var newAlbum = new Album();
 
-        //[HttpPost]
-        //public async Task<IActionResult> Create(Album album)
-        //{
+            return View(newAlbum);
+        }
 
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Create(Album album)
+        {
+            //TODO: DI for url, etc
+            var requestUrl = _baseUrl;
+            var httpClient = new HttpClient();
+
+            using (var response = await httpClient.PostAsync(requestUrl, new StringContent(JsonConvert.SerializeObject(album), Encoding.UTF8, "application/json")))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(String.Format("Server error (HTTP {0}: {1}).", response.StatusCode, response.Content));
+                }
+            }
+
+            //Go back to the list
+            return RedirectToAction("Index");
+        }
 
     }
 }
