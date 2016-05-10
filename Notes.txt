@@ -1,0 +1,2 @@
+Communicates with the SimpleMEANAPI backend (from my Github at https://github.com/rickschrader/SimpleMEANApi)
+

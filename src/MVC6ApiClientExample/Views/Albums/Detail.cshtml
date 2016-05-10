@@ -1,0 +1,19 @@
+﻿
+@model MVC6ApiClientExample.Models.Album
+
+@{
+    ViewBag.Title = "Album Detail";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+    </tr>
+    <tr>
+        <td>@Model.Title</td>
+        <td>@Model.Artist</td>
+    </tr>
+</table>
