@@ -13,7 +13,6 @@ namespace MVC6ApiClientExample.Controllers
 {
     public class AlbumsController : Controller
     {
-        //TODO: DI for this
         string _baseUrl = "http://localhost:8000/api/albums/";
 
         public AlbumsController()
@@ -24,7 +23,6 @@ namespace MVC6ApiClientExample.Controllers
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            //TODO: DI for url, etc
             var requestUrl = _baseUrl;
             var httpClient = new HttpClient();
 
@@ -46,7 +44,6 @@ namespace MVC6ApiClientExample.Controllers
 
         public async Task<IActionResult> Detail(string id)
         {
-            //TODO: DI for url, etc
             var requestUrl = _baseUrl + id;
             var httpClient = new HttpClient();
 
@@ -68,7 +65,6 @@ namespace MVC6ApiClientExample.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            //TODO: DI for url, etc
             var requestUrl = _baseUrl + id;
             var httpClient = new HttpClient();
 
@@ -91,7 +87,6 @@ namespace MVC6ApiClientExample.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Album album)
         {
-            //TODO: DI for url, etc
             var requestUrl = _baseUrl + album.Id;
             var httpClient = new HttpClient();
 
@@ -111,9 +106,7 @@ namespace MVC6ApiClientExample.Controllers
         {
             var requestUrl = _baseUrl + id;
             var httpClient = new HttpClient();
-
-            //TODO: Prompt to confirm delete?
-
+            
             using (var response = await httpClient.DeleteAsync(requestUrl))
             {
                 if (!response.IsSuccessStatusCode)
@@ -125,8 +118,7 @@ namespace MVC6ApiClientExample.Controllers
             //Refresh the list
             return RedirectToAction("Index");
         }
-
-
+        
         public IActionResult Create()
         {
             var newAlbum = new Album();
@@ -137,7 +129,6 @@ namespace MVC6ApiClientExample.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Album album)
         {
-            //TODO: DI for url, etc
             var requestUrl = _baseUrl;
             var httpClient = new HttpClient();
 

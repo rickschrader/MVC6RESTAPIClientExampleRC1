@@ -20,7 +20,7 @@
         <tr>
             <td>@Html.ActionLink(album.Title, "Detail", new { id = album.Id })</td>
             <td>@album.Artist</td>
-            <td>@Html.ActionLink("Delete", "Delete", "Albums", new { id = album.Id }, new { @class = "btn btn-danger" })</td>
+            <td>@Html.ActionLink("Delete", "Delete", "Albums", new { id = album.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure?')" })</td>
         </tr>
     }
 </table>
