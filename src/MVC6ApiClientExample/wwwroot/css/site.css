@@ -3,6 +3,28 @@
     padding-bottom: 20px;
 }
 
+table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+tr {
+    height: 38px;
+}
+
+th, td  {
+    width: 200px;
+}
+
+.buttonholder {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.editor-label {
+    margin-top: 20px;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

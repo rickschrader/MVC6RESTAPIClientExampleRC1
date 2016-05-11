@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@Html.ActionLink("Add Album", "Create")
+@Html.ActionLink("Add Album", "Create", "Albums", null, new { @class = "btn btn-primary" })
 
 <table>
     <tr>
@@ -20,7 +20,7 @@
         <tr>
             <td>@Html.ActionLink(album.Title, "Detail", new { id = album.Id })</td>
             <td>@album.Artist</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = album.Id })</td>
+            <td>@Html.ActionLink("Delete", "Delete", "Albums", new { id = album.Id }, new { @class = "btn btn-danger" })</td>
         </tr>
     }
 </table>

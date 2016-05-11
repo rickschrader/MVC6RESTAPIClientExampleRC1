@@ -7,7 +7,7 @@
 <h1>@ViewBag.Title</h1>
 
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Albums", null, new { @class = "btn btn-primary" })
 </p>
 
 @using (Html.BeginForm())
@@ -16,7 +16,6 @@
     if (Model != null)
     {
         <fieldset>
-            <legend>Album</legend>
 
             <div class="editor-label">
                 @Html.LabelFor(model => model.Title)
@@ -34,7 +33,7 @@
             </div>
             <div class="navigation">
                 <div class="buttonholder">
-                    <input type="submit" value="Save" />
+                    <input type="submit" value="Save" class="btn btn-default btn-success" />
                 </div>
             </div>
         </fieldset>
