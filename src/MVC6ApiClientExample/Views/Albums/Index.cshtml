@@ -7,7 +7,10 @@
 
 <h2>@ViewBag.Title</h2>
 
-@Html.ActionLink("Add Album", "Create", "Albums", null, new { @class = "btn btn-primary" })
+<!--//Before new tag helpers
+//@Html.ActionLink("Add Album", "Create", "Albums", null, new { @class = "btn btn-primary" })
+//Using new tag Helpers-->
+<a asp-controller="Albums" asp-action="Create" class="btn btn-primary">Add Album</a>
 
 <table>
     <tr>
@@ -18,9 +21,18 @@
     @foreach(var album in Model)
     {
         <tr>
-            <td>@Html.ActionLink(album.Title, "Detail", new { id = album.Id })</td>
+            <!--//Before new tag helpers
+            //<td>@Html.ActionLink(album.Title, "Detail", new { id = album.Id })</td>
+            //Using new tag helpers-->
+            <td><a asp-controller="Albums" asp-action="Detail" asp-route-id="@album.Id">@album.Title</a></td>
+
             <td>@album.Artist</td>
+            
+            <!--//Before new tag helpers
             <td>@Html.ActionLink("Delete", "Delete", "Albums", new { id = album.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure?')" })</td>
+            //Using new tag helpers-->
+            <td><a asp-controller="Albums" asp-action="Delete" asp-route-id="@album.Id" class="btn btn-danger" onclick = "return confirm('Are you sure?')">Delete</a></td>
+
         </tr>
     }
 </table>

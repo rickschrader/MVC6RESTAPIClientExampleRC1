@@ -7,6 +7,10 @@
 
 <h2>@ViewBag.Title</h2>
 
+<p>
+    <a asp-controller="Albums" asp-action="Index" class="btn btn-primary">Back to List</a>
+</p>
+
 <table>
     <tr>
         <th>Title</th>
@@ -18,4 +22,4 @@
     </tr>
 </table>
 
-@Html.ActionLink("Edit this Album", "Edit", "Albums", new { id = Model.Id }, new { @class = "btn btn-primary" })
+<a asp-controller="Albums" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit this Album</a>

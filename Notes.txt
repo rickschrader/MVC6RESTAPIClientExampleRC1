@@ -1,2 +1,8 @@
 Communicates with the SimpleMEANAPI backend (from my Github at https://github.com/rickschrader/SimpleMEANApi)
 
+Tag helper documentation:
+https://blogs.msdn.microsoft.com/cdndevs/2015/08/06/a-complete-guide-to-the-mvc-6-tag-helpers/
+http://www.davepaquette.com/archive/2015/06/01/mvc-6-anchor-tag-helper.aspx
+http://www.davepaquette.com/archive/2015/05/13/mvc6-input-tag-helper-deep-dive.aspx
+http://www.davepaquette.com/archive/2015/05/18/mvc-6-label-tag-helper.aspx
+http://www.davepaquette.com/archive/2015/05/14/mvc6-validation-tag-helpers-deep-dive.aspx

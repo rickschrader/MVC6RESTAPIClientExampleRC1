@@ -1,6 +1,5 @@
 ﻿
 using Newtonsoft.Json;
-using System.Runtime.Serialization;
 
 namespace MVC6ApiClientExample.Models
 {
